@@ -57,7 +57,9 @@ app.get('/gossip',(req,res)=>{
 ////////
 //NEW
 ///////
-
+app.get('/gossip/new',(req,res)=>{
+    res.render('./New')
+})
 
 ////////
 //DELETE
