@@ -4,7 +4,7 @@ const express=require('express')
 const mongoose=require('mongoose')
 const app=express();
 const methodOverride=require('method-override')
-
+const Gossip=require('./models/gossip')
 app.use(express.static('public'))
 
 ///views
@@ -34,12 +34,23 @@ app.use(methodOverride('_method'))
 
 
 
+// 7 Restful route === INDEX NEW DELETE UPDATE CREATE EDIT SHOW
+
+
 
 //INDEX
 //////
 
 app.get('/gossip',(req,res)=>{
-    res.render("Index")
+    Gossip.find({}, (err,foundGossip)=>{
+        if(err){
+            res.status(400).send(err)
+        }else{
+            res.render('./Index',{
+                gossip:foundGossip
+            })
+        }
+    })
 })
 
 
@@ -76,5 +87,7 @@ app.get('/gossip',(req,res)=>{
 
 
 
+const PORT = process.env.PORT;
 
 
+app.listen(PORT,console.log(`I am listening on ${PORT}`))
