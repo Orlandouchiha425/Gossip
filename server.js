@@ -64,12 +64,26 @@ app.get('/gossip/new',(req,res)=>{
 ////////
 //DELETE
 ///////
-
+app.delete('/gossip/:id',(req,res)=>{
+    Gossip.findByIdAndDelete(req.params.id,(err,deletedGossip)=>{
+        if(err){
+            res.status(400).send(err)
+        }else{res.redirect('/gossip')}
+    })
+})
 
 
 ///////
 //UPDATE
 ///////
+app.put('/gossip/:id',(req,res)=>{
+    Gossip.findByIdAndUpdate(req.params.id,{new:true},(err,updatedGossip)=>{
+        if(err){
+            res.status(400).send(err)
+        }else{res.redirect(`/gossip/${req.params.id}`)}
+    })
+})
+
 
 ///////
 ///CREATE
@@ -87,7 +101,14 @@ app.get('/gossip/new',(req,res)=>{
 //SHOW
 //////
 
-
+///
+//Seed
+/////
+app.get('/seed',(req,res)=>{
+    const startPost=[
+        {title:"Orlando is so short",image:"./OompaLoompa",post:"Orlando is so short and fat that he is 1 pizza away from getting rolled by willy wonka and squeeze the grape out of him"}
+    ]
+})
 
 const PORT = process.env.PORT;
 

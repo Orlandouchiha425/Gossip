@@ -1,6 +1,9 @@
 const mongoose=require('mongoose')
 const gossipsSchema=new mongoose.Schema({
-    name:String,
+    title:String,
+    image:String,
+    post:String,
+    
 
 })
 
