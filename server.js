@@ -100,6 +100,16 @@ app.put('/gossip/:id',(req,res)=>{
 //////
 //SHOW
 //////
+app.get('/gossip/:id',(req,res)=>{
+    Gossip.findById(req.params.id,(err,foundGossip)=>{
+        if(err){
+            res.status(400).send(err)
+        }else{
+            res.render('./Show')
+        }
+    })
+})
+
 
 ///
 //Seed
