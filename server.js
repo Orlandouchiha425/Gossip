@@ -106,7 +106,7 @@ app.get('/gossip/:id/edit',(req,res)=>{
     Gossip.findById(req.params.id,(err, foundGossip)=>{
         if(err){
             res.status(400).send(err)
-        }else{res.render('gossip/edit',{
+        }else{res.render('./edit',{
             gossip:foundGossip
         })}
     })

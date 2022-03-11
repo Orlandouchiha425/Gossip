@@ -7,7 +7,7 @@ class Edit extends React.Component{
                 Title: <input type="text" name="title" defaultValue={this.props.gossip.name}/><br/>
                 Post: <textarea type='text' name="post" defaultValue={this.props.gossip.post}/><br/>
                 Image:<input type="file" id="myFile" name="image" defaultValue={this.props.gossip.image}/><br/>
-                
+                <input type='submit' value='submit changes'/>
                 </form>
         )
     }
