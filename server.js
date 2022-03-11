@@ -132,11 +132,18 @@ app.get('/gossip/:id',(req,res)=>{
 ///
 //Seed
 /////
-// app.get('/seed',(req,res)=>{
-//     const startPost=[
-//         {title:"Orlando is so short",image:"./OompaLoompa",post:"Orlando is so short and fat that he is 1 pizza away from getting rolled by willy wonka and squeeze the grape out of him"}
-//     ]
-// })
+app.get('/seed',(req,res)=>{
+    const startPost=[
+        {title:"Orlando is so short",post:"Orlando is so short and chubby that he is 1 pizza away from getting rolled by willy wonka and  squeeze the grape out of him",image:"./OompaLoompa"},
+        {title:"noisy neighbor" ,post:"Is 3 am and the neighbor in the apartment 209 is very noisey, i cant sleep. someone call the policy and report noise complaint",image:"https://i.imgur.com/AYxFxuO.png" }
+    ]
+    ///DELETE ALL POSTS
+    Gossip.deleteMany({}).then((data)=>{
+        Gossip.create(startPost).then((data)=>{
+            res.json(data)
+        })
+    })
+})
 
 const PORT = process.env.PORT;
 
