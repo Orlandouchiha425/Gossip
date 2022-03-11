@@ -9,9 +9,23 @@ class New extends React.Component{
                 <nav>
                     <a href='/gossip'>Back to home screen</a>
                 </nav>
+
+                <form action="/gossip" method='POST' >
+                    Title: <input name="title" type="text"/><br/>
+                    Post: <textarea name='post' type='text'/><br/>
+                    Image: <input type="file" id="myFile" name="image"/><br/>
+                    
+                    <input type='submit' value='Submit'/> 
+                </form>
+                
+
+                
+       
             </div>
         )
     }
 }
 
 module.exports=New;
+
+

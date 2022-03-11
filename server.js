@@ -68,7 +68,7 @@ app.delete('/gossip/:id',(req,res)=>{
     Gossip.findByIdAndDelete(req.params.id,(err,deletedGossip)=>{
         if(err){
             res.status(400).send(err)
-        }else{res.redirect('/gossip')}
+        }else{res.redirect('./gossip')}
     })
 })
 
@@ -89,12 +89,28 @@ app.put('/gossip/:id',(req,res)=>{
 ///CREATE
 //////
 
-
+app.post('/gossip',(req,res)=>{
+    Gossip.create(req.body,(err,createdGossip)=>{
+        if(err){
+            res.status(400).send(err)
+        }else{
+            console.log(createdGossip)
+            res.redirect('/gossip')}
+    })
+})
 
 ///////
 //EDIT
 ///////
-
+app.get('/gossip/:id/edit',(req,res)=>{
+    Gossip.findById(req.params.id,(err, foundGossip)=>{
+        if(err){
+            res.status(400).send(err)
+        }else{res.render('gossip/edit',{
+            gossip:foundGossip
+        })}
+    })
+})
 
 
 //////
@@ -105,7 +121,9 @@ app.get('/gossip/:id',(req,res)=>{
         if(err){
             res.status(400).send(err)
         }else{
-            res.render('./Show')
+            res.render('./Show',{
+                gossip:foundGossip
+            })
         }
     })
 })
@@ -114,11 +132,11 @@ app.get('/gossip/:id',(req,res)=>{
 ///
 //Seed
 /////
-app.get('/seed',(req,res)=>{
-    const startPost=[
-        {title:"Orlando is so short",image:"./OompaLoompa",post:"Orlando is so short and fat that he is 1 pizza away from getting rolled by willy wonka and squeeze the grape out of him"}
-    ]
-})
+// app.get('/seed',(req,res)=>{
+//     const startPost=[
+//         {title:"Orlando is so short",image:"./OompaLoompa",post:"Orlando is so short and fat that he is 1 pizza away from getting rolled by willy wonka and squeeze the grape out of him"}
+//     ]
+// })
 
 const PORT = process.env.PORT;
 
