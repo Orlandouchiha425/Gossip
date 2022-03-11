@@ -5,7 +5,8 @@ const mongoose=require('mongoose')
 const app=express();
 const methodOverride=require('method-override')
 const Gossip=require('./models/gossip')
-
+const multer=require('multer')
+const upload=multer({dest: " uploads/"})
 ///this makes my css works
 app.use(express.static('public'))
 
@@ -70,7 +71,7 @@ app.delete('/gossip/:id',(req,res)=>{
     Gossip.findByIdAndDelete(req.params.id,(err,deletedGossip)=>{
         if(err){
             res.status(400).send(err)
-        }else{res.redirect('./gossip')}
+        }else{res.redirect('/gossip')}
     })
 })
 
