@@ -5,6 +5,8 @@ const mongoose=require('mongoose')
 const app=express();
 const methodOverride=require('method-override')
 const Gossip=require('./models/gossip')
+
+///this makes my css works
 app.use(express.static('public'))
 
 ///views
