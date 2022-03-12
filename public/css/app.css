@@ -5,3 +5,24 @@ ul.no-bullets{
 /* body{
     background-color: aquamarine;
 } */
+
+
+/* .short{
+    line-height:1.2em;
+    height:2.6em;
+    overflow:hidden;
+  }   */
+  
+.new-color:hover{
+background-color: rgb(179, 5, 5);
+}
+  
+
+.like_btn{
+font-size: 10px;
+}
+/* img{
+    height: 500px;
+    width: 500px;
+} */
+

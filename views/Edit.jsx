@@ -5,15 +5,16 @@ class Edit extends React.Component{
 
         return(
             <Default>
-                <nav className='nav'>
-                    <a className="nav-link" href='/gossip'>Home</a>
-                    <a className='nav-link' href='/gossip/new'>New Post</a>
-                    <a className='nav-link' href='#'>Neigborhood Watch</a>
-                </nav>
+                <nav className='nav p-3 mb-2 bg-secondary '>
+                    <a className="nav-link text-white new-color" href='/gossip'>Home</a>
+                    <a className='nav-link text-white new-color' href='/gossip/new'>New Post</a>
+                    <a className='nav-link text-white new-color' href='#'>Neigborhood Watch</a>
+                    <a className='nav-link text-white new-color' href='/contact'>Contact Us</a>
+                    </nav>
             <form action={`/gossip/${this.props.gossip._id}?_method=PUT`} method="POST">
                 Title: <input type="text" name="title" defaultValue={this.props.gossip.name}/><br/>
                 Post: <textarea type='text' name="post" defaultValue={this.props.gossip.post}/><br/>
-                Image:<input type="file" id="myFile" name="image" defaultValue={this.props.gossip.image}/><br/>
+                Url Image:<input type="text" name="image" defaultValue={this.props.gossip.image}/><br/>
                 <input type='submit' value='submit changes'/>
                 </form>
                 </Default>

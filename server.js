@@ -40,12 +40,16 @@ app.use(methodOverride('_method'))
 // 7 Restful route === INDEX NEW DELETE UPDATE CREATE EDIT SHOW
 
 
+app.get('/contact',(req,res)=>{
+    res.render('./Contact')
+})
 
 //INDEX
 //////
 
 app.get('/gossip',(req,res)=>{
     Gossip.find({}, (err,foundGossip)=>{
+
         if(err){
             res.status(400).send(err)
         }else{
@@ -80,7 +84,7 @@ app.delete('/gossip/:id',(req,res)=>{
 //UPDATE
 ///////
 app.put('/gossip/:id',(req,res)=>{
-    Gossip.findByIdAndUpdate(req.params.id,{new:true},(err,updatedGossip)=>{
+    Gossip.findByIdAndUpdate(req.params.id,req.body,{new:true},(err,updatedGossip)=>{
         if(err){
             res.status(400).send(err)
         }else{res.redirect(`/gossip/${req.params.id}`)}
@@ -106,6 +110,7 @@ app.post('/gossip',(req,res)=>{
 //EDIT
 ///////
 app.get('/gossip/:id/edit',(req,res)=>{
+    const {id}=req.params;
     Gossip.findById(req.params.id,(err, foundGossip)=>{
         if(err){
             res.status(400).send(err)
@@ -116,7 +121,14 @@ app.get('/gossip/:id/edit',(req,res)=>{
 })
 
 
-
+// app.put('/logs/:id',(req,res)=>{
+  
+//     Gossip.findByIdAndUpdate(req.params.id, req.body,{new:true},(err,updatedLog)=>{
+//         if(err){
+//             res.status(400).send(err)
+//         }else{res.redirect(`/logs/${req.params.id}`)}
+//     })
+// })
 //////
 //SHOW
 //////
@@ -152,9 +164,6 @@ app.get('/seed',(req,res)=>{
 
 //CONTACT INFORMATION
 
-app.get('/contact',(req,res)=>{
-    res.render('./Contact')
-})
 
 const PORT = process.env.PORT;
 
