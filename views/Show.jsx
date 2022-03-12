@@ -9,7 +9,8 @@ class Show extends React.Component{
             <nav className='nav'>
                     <a className="nav-link" href='/gossip'>Home</a>
                     <a className='nav-link' href='/gossip/new'>New Post</a>
-                    
+                    <a className='nav-link' href='#'>Neigborhood Watch</a>
+                    <a className='nav-link' href='/contact'>Contact Us</a>
                     </nav>
             <div className='container' >
                 <div className="row justify-content-center" >
@@ -28,6 +29,8 @@ class Show extends React.Component{
                    {gossip.image}
                     </div>
                     </div>
+
+
             </div>
             </Default>
         )
@@ -35,3 +38,6 @@ class Show extends React.Component{
 }
 
 module.exports=Show;
+
+
+

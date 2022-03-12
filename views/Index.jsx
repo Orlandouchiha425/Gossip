@@ -6,10 +6,13 @@ class Index extends React.Component{
         const gossip=this.props.gossip;
         return(
             <Default>
+
+                
                 <nav className='nav'>
                     <a className="nav-link" href='/gossip'>Home</a>
                     <a className='nav-link' href='/gossip/new'>New Post</a>
-                    
+                    <a className='nav-link' href='#'>Neigborhood Watch</a>
+                    <a className='nav-link' href='/contact'>Contact Us</a>
                     </nav>
             <div className='container'>
                 <div className="row justify-content-center">
@@ -32,7 +35,9 @@ class Index extends React.Component{
                 }
                  </ul>
                  </div>
-              <address>P Sherman 42 Wallaby Way Sydney</address>
+
+    
+              
               </div>
             </div>
             </Default>

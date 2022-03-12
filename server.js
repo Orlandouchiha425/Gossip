@@ -116,6 +116,7 @@ app.get('/gossip/:id/edit',(req,res)=>{
 })
 
 
+
 //////
 //SHOW
 //////
@@ -146,6 +147,13 @@ app.get('/seed',(req,res)=>{
             res.json(data)
         })
     })
+})
+
+
+//CONTACT INFORMATION
+
+app.get('/contact',(req,res)=>{
+    res.render('./Contact')
 })
 
 const PORT = process.env.PORT;

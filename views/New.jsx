@@ -11,15 +11,18 @@ class New extends React.Component{
                 <nav className='nav'>
                     <a className="nav-link" href='/gossip'>Home</a>
                     <a className='nav-link' href='/gossip/new'>New Post</a>
+                    <a className='nav-link' href='#'>Neigborhood Watch</a>
+                    <a className='nav-link' href='/contact'>Contact Us</a>
+
                     
                     </nav>
             <div>
                   
             </div>
             <div>
-                <h1>
-                    This is the new Page
-                </h1>
+                <h2>
+                    Create a New Gossip
+                </h2>
               
                 
                 <form action="/gossip" method='POST' >
