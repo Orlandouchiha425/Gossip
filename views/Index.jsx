@@ -1,4 +1,12 @@
+const res = require('express/lib/response');
 const React =require('react')
+const express=require('express')
+const app=express()
+
+
+
+
+
 
 const Default=require('./Default')
 class Index extends React.Component{
@@ -6,8 +14,8 @@ class Index extends React.Component{
         const gossip=this.props.gossip;
         return(
             <Default>
-
                 
+
                 <nav className='nav'>
                     <a className="nav-link" href='/gossip'>Home</a>
                     <a className='nav-link' href='/gossip/new'>New Post</a>
@@ -19,6 +27,7 @@ class Index extends React.Component{
                 
                 <div>
                 <h1>Welcome Home </h1>
+                
                 </div>
 
                 <div >
@@ -44,5 +53,10 @@ class Index extends React.Component{
         )
     }
 }
+
+
+
+
+
 
 module.exports=Index;
