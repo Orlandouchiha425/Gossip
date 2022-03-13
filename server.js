@@ -45,7 +45,7 @@ app.get('/contact',(req,res)=>{
 //INDEX
 //////
 
-app.get('/gossip',(req,res)=>{
+app.get('/',(req,res)=>{
     Gossip.find({}, (err,foundGossip)=>{
 
         if(err){
@@ -58,22 +58,20 @@ app.get('/gossip',(req,res)=>{
     })
 })
 
-app.get('/', (req, res) => {
-    res.send(" Your server is running you better go catch it");
-})
+
 
 
 ////////
 //NEW
 ///////
-app.get('/gossip/new',(req,res)=>{
+app.get('/new',(req,res)=>{
     res.render('./New')
 })
 
 ////////
 //DELETE
 ///////
-app.delete('/gossip/:id',(req,res)=>{
+app.delete('/:id',(req,res)=>{
     Gossip.findByIdAndDelete(req.params.id,(err,deletedGossip)=>{
         if(err){
             res.status(400).send(err)
@@ -85,7 +83,7 @@ app.delete('/gossip/:id',(req,res)=>{
 ///////
 //UPDATE
 ///////
-app.put('/gossip/:id',(req,res)=>{
+app.put('/:id',(req,res)=>{
     Gossip.findByIdAndUpdate(req.params.id,req.body,{new:true},(err,updatedGossip)=>{
         if(err){
             res.status(400).send(err)
@@ -98,7 +96,7 @@ app.put('/gossip/:id',(req,res)=>{
 ///CREATE
 //////
 
-app.post('/gossip',(req,res)=>{
+app.post('/',(req,res)=>{
     Gossip.create(req.body,(err,createdGossip)=>{
         if(err){
             res.status(400).send(err)
@@ -111,7 +109,7 @@ app.post('/gossip',(req,res)=>{
 ///////
 //EDIT
 ///////
-app.get('/gossip/:id/edit',(req,res)=>{
+app.get('/:id/edit',(req,res)=>{
     const {id}=req.params;
     Gossip.findById(req.params.id,(err, foundGossip)=>{
         if(err){
@@ -134,7 +132,7 @@ app.get('/gossip/:id/edit',(req,res)=>{
 //////
 //SHOW
 //////
-app.get('/gossip/:id',(req,res)=>{
+app.get('/:id',(req,res)=>{
     Gossip.findById(req.params.id,(err,foundGossip)=>{
         if(err){
             res.status(400).send(err)
