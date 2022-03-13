@@ -1,6 +1,6 @@
 const React =require('react')
 const multer=require('multer')
-const upload=multer()
+// const upload=multer()
 
 
 const Default=require('./Default')
