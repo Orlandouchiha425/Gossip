@@ -58,6 +58,10 @@ app.get('/gossip',(req,res)=>{
     })
 })
 
+app.get('/', (req, res) => {
+    res.send(" Your server is running you better go catch it");
+})
+
 
 ////////
 //NEW
