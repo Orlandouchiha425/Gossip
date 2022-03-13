@@ -1,8 +1,8 @@
 const res = require('express/lib/response');
 const React =require('react')
 const express=require('express')
-const app=express()
 
+const like=require('../controllers/functions')
 
 const Default=require('./Default')
 class Index extends React.Component{
@@ -32,8 +32,8 @@ class Index extends React.Component{
                 
                 </div>
 
-                <div >
-                <ul className='no-bullets clearfix container-sm '>
+                <div className='container-sm' >
+                <ul className='no-bullets clearfix '>
                 <img src="https://i.imgur.com/iqIIuXr.png" class="col-md-6 float-md-end mb-3 ms-md-3" alt="Snitch"/>
 
                 {
@@ -41,12 +41,15 @@ class Index extends React.Component{
                         return(
                           
 
-                        <li key={`${gossips._id}`}>{<button className='like_btn'><span id='icon'><i className="fa-solid fa-thumbs-up"></i></span>
-                        <span id='count'>0</span>likes</button>}
-                        <a href={`/gossip/${gossips._id}`}>{gossips.title} </a>
-                        
-                        <p>{gossips.post}</p>
-                        
+                        <li className="p-3 mb-2 bg-transparent text-dark"  key={`${gossips._id}`}>
+                            {<button className='like_btn '>
+                                <span id='icon'><i className="fa-solid fa-thumbs-up">
+                                    </i></span>
+                        <span id='count' >0</span>likes</button>}
+                        <a href={`/gossip/${gossips._id}` }><h4 >{gossips.title}</h4>  </a>
+                        <div className='short'>
+                        <p >{gossips.post}</p>
+                        </div>
                       
                         </li>
                         
@@ -66,6 +69,11 @@ class Index extends React.Component{
         )
     }
 }
+
+
+
+
+
 
 
 

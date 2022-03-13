@@ -13,12 +13,17 @@ class Show extends React.Component{
                     <a className='nav-link text-white new-color' href='#'>Neigborhood Watch</a>
                     <a className='nav-link text-white new-color' href='/contact'>Contact Us</a>
                     </nav>
+
+
+                    
             <div className='container' >
                 <div className="row justify-content-center" >
                 <h1>{gossip.title}</h1>
                 <div >
                 <p>{gossip.post}</p>
-                <a href={`/gossip/${ gossip._id}/edit`}><button>Edit</button></a><br/>
+                
+                <a href={`/gossip/${ gossip._id}/edit`}>
+                    <button>Edit</button></a>
                 <form action={`/gossip/${gossip._id}?_method=Delete`} method='POST'>
                     <input type="submit" value='Delete'/>
                 

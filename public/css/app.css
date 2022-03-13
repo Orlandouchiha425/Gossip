@@ -2,16 +2,16 @@ ul.no-bullets{
     list-style-type:none;
 }
 
-/* body{
-    background-color: aquamarine;
-} */
+body{
+    background-color: rgba(255, 255, 255, 0.664);
+}
 
 
-/* .short{
+.short{
     line-height:1.2em;
     height:2.6em;
     overflow:hidden;
-  }   */
+  }  
   
 .new-color:hover{
 background-color: rgb(179, 5, 5);
@@ -21,6 +21,8 @@ background-color: rgb(179, 5, 5);
 .like_btn{
 font-size: 10px;
 }
+
+
 /* img{
     height: 500px;
     width: 500px;

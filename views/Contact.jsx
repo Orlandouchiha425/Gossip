@@ -48,7 +48,7 @@ class Contact extends React.Component{
                   <p>Orlando Valadez</p>
                  <p>P Sherman 42 Wallaby Way Sydney</p> 
                  <p>281-330-8004</p>
-                 {/* <p>{geocode()}</p> */}
+               
                   </footer>
           </Default>  
         )
