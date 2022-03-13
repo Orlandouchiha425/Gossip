@@ -3,6 +3,7 @@ const gossipsSchema=new mongoose.Schema({
     title:String,
     image:String,
     post:String,
+    username:String,
     
 
 })

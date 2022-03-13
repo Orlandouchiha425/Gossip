@@ -2,7 +2,6 @@ const res = require('express/lib/response');
 const React =require('react')
 const express=require('express')
 
-const like=require('../controllers/functions')
 
 const Default=require('./Default')
 class Index extends React.Component{

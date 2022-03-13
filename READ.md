@@ -1,6 +1,12 @@
 ![wire Frame](/pictures/wireframe.png)
 ![app picture](/pictures/GossipPage.png)
 
+
+GitHub Project Board:
+https://github.com/Orlandouchiha425/Gossip/projects/1
+
+
+
 ~~~~~What is supposed to do------
 I attempted to create a copy of Reddit
 Users can go to the main page and see all the posts made
