@@ -34,7 +34,7 @@ class Index extends React.Component{
 
                 <div className='container-sm' >
                 <ul className='no-bullets clearfix '>
-                <img src="https://i.imgur.com/iqIIuXr.png" class="col-md-6 float-md-end mb-3 ms-md-3" alt="Snitch"/>
+                <img src="https://i.imgur.com/iqIIuXr.png" className="col-md-6 float-md-end mb-3 ms-md-3" alt="Snitch"/>
 
                 {
                     gossip.map((gossips)=>{ 

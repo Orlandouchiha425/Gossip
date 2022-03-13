@@ -5,8 +5,6 @@ const mongoose=require('mongoose')
 const app=express();
 const methodOverride=require('method-override')
 const Gossip=require('./models/gossip')
-const multer=require('multer')
-const upload=multer({dest: " uploads/"})
 ///this makes my css works
 app.use(express.static('public'))
 
