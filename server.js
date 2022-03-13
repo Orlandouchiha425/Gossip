@@ -5,6 +5,8 @@ const mongoose=require('mongoose')
 const app=express();
 const methodOverride=require('method-override')
 const Gossip=require('./models/gossip')
+const PORT = process.env.PORT || 8000
+
 ///this makes my css works
 app.use(express.static('public'))
 
@@ -168,7 +170,7 @@ app.get('/seed',(req,res)=>{
 //CONTACT INFORMATION
 
 
-const PORT = process.env.PORT;
+// `const PORT = process.env.PORT;`
 
 
 app.listen(PORT,console.log(`I am listening on ${PORT}`))
