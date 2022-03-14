@@ -24,7 +24,7 @@ class New extends React.Component{
                 </h2>
               
                 
-                <form action="/gossip" method='POST' >
+                <form action="/" method='POST' >
                     Title: <input name="title" type="text"/><br/>
                     Post: <textarea name='post' type='text'/><br/>
                     Image Url: <input name='image' type='text'/><br/>

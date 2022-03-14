@@ -34,7 +34,7 @@ class Index extends React.Component{
 
                 <div className='container-sm' >
                 <ul className='no-bullets clearfix '>
-                <img src="https://i.imgur.com/iqIIuXr.png" class="col-md-6 float-md-end mb-3 ms-md-3" alt="Snitch"/>
+                <img src="https://i.imgur.com/iqIIuXr.png" className="col-md-6 float-md-end mb-3 ms-md-3" alt="Snitch"/>
 
                 {
                     gossip.map((gossips)=>{ 
@@ -46,7 +46,7 @@ class Index extends React.Component{
                                 <span id='icon'><i className="fa-solid fa-thumbs-up">
                                     </i></span>
                         <span id='count' >0</span>likes</button>}
-                        <a href={`/gossip/${gossips._id}` }><h4 >{gossips.title}</h4>  </a>
+                        <a href={`/${gossips._id}` }><h4 >{gossips.title}</h4>  </a>
                         <div className='short'>
                         <p >{gossips.post}</p>
                         </div>

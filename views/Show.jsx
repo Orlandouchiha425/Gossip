@@ -22,9 +22,9 @@ class Show extends React.Component{
                 <div >
                 <p>{gossip.post}</p>
                 
-                <a href={`/gossip/${ gossip._id}/edit`}>
+                <a href={`/${ gossip._id}/edit`}>
                     <button>Edit</button></a>
-                <form action={`/gossip/${gossip._id}?_method=Delete`} method='POST'>
+                <form action={`/${gossip._id}?_method=Delete`} method='POST'>
                     <input type="submit" value='Delete'/>
                 
 
