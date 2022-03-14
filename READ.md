@@ -2,9 +2,18 @@
 ![app picture](/pictures/GossipPage.png)
 
 
+
+
+
+
 GitHub Project Board:
 https://github.com/Orlandouchiha425/Gossip/projects/1
 
+
+
+Github Page
+
+https://github.com/Orlandouchiha425/Gossip
 
 
 ~~~~~What is supposed to do------
@@ -21,17 +30,37 @@ https://www.pluralsight.com/guides/event-listeners-in-react-components
 
 
 Getting Started:
-If you want to avoid typing new posts, i have created a seed file. Please go to localhost3000/seed
-Once is done, reload the page to localhost3000/gossip
+If you want to avoid typing new posts, i have created a seed file. Please go to localhost8000/seed or web: https://gossipnews.herokuapp.com/seed
+Once is done, reload the page to localhost3000/gossip  web :  https://gossipnews.herokuapp.com/
 Then you can add posts, edit, delete
 Important: if you need to add an image, please use online images ex: https://imgur.com/ 
 and add Direct Links
 
 
+Go to Direct Live Website below
+https://gossipnews.herokuapp.com/
 
 
-Tools used html, jsx, express, css, bootstrap 5,herokou, mongoose
+Tools used :
+html
+jsx
+express
+css
+bootstrap 5
+herokou
+mongoose
+npm install
+.git ignore
+imgur.com
+morgan
 
 
 I want to add the following( Add geo location API so it can only show posts in your area and i want to make Multer work or something related to it, so i can upload images from your device. I want to get my like button to work and make it so the "Top"Liked posts will show as a corousel. i had the corousel working but i had to deleted since i coulnt get my like button to work.
 https://getbootstrap.com/docs/5.0/components/carousel/ )
+
+
+
+
+
+How it all connects: 
+

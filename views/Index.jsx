@@ -33,7 +33,7 @@ class Index extends React.Component{
                 </div>
 
                 <div className='container-sm' >
-                <ul className='no-bullets clearfix '>
+                <ul className='no-bullets '>
                 <img src="https://i.imgur.com/iqIIuXr.png" className="col-md-6 float-md-end mb-3 ms-md-3" alt="Snitch"/>
 
                 {
@@ -41,7 +41,7 @@ class Index extends React.Component{
                         return(
                           
 
-                        <li className="p-3 mb-2 bg-transparent text-dark"  key={`${gossips._id}`}>
+                        <li className="p-3 mb-2 bg-transparent text-dark  w-50 p-3 border border-5 rounded-star "  key={`${gossips._id}`}>
                             {<button className='like_btn '>
                                 <span id='icon'><i className="fa-solid fa-thumbs-up">
                                     </i></span>

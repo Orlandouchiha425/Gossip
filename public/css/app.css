@@ -1,6 +1,8 @@
-ul.no-bullets{
+.no-bullets{
     list-style-type:none;
+   
 }
+
 
 body{
     background-color: rgba(255, 255, 255, 0.664);
