@@ -42,7 +42,7 @@ class Contact extends React.Component{
                     <a className='nav-link text-white new-color' href='#'>Neigborhood Watch</a>
                     <a className='nav-link text-white new-color' href='/contact'>Contact Us</a>
                     </nav>
-              <a class="footer" href= "mailto:valadez425@gmail.com?" target="_top">valadez425@gmail.com</a>
+              <a className="footer" href= "mailto:valadez425@gmail.com?" target="_top">valadez425@gmail.com</a>
                 <footer>
                   <h3>Contact Us</h3>
                   <p>Orlando Valadez</p>

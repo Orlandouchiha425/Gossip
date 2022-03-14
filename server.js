@@ -6,7 +6,8 @@ const app=express();
 const methodOverride=require('method-override')
 const Gossip=require('./models/gossip')
 const path = require('path');
-
+const morgan=require('morgan')
+const gossipController=require("./controllers/gossips")
 ///this makes my css works
 app.use(express.static('public'))
 
@@ -22,23 +23,24 @@ mongoose.connect(process.env.DATABASE_URL,{
 })
 
 
+
 ////////
 //Middle Ware
 ///////
+app.use(morgan('tiny'));
 app.use(express.urlencoded({extended:true}))
+app.use(methodOverride('_method'))
 app.use((req,res,next)=>{
     console.log(req.body)
     next()
 })
 
-//////Method Overrid
-app.use(methodOverride('_method'))
-///////
 
+app.use('/',gossipController)
 
-///
-//Seed
-/////
+// ///
+// //Seed
+// /////
 app.get('/seed',(req,res)=>{
     const startPost=[
         {title:"Orlando is so short",post:"Orlando is so short and chubby that he is 1 pizza away from getting rolled by willy wonka and  squeeze the grape out of him"},
@@ -62,25 +64,26 @@ app.get('/seed',(req,res)=>{
 // 7 Restful route === INDEX NEW DELETE UPDATE CREATE EDIT SHOW
 
 
-app.get('/contact',(req,res)=>{
-    res.render('./Contact')
-})
+
+
+
+
 
 //INDEX
 //////
 
-app.get('/',(req,res)=>{
-    Gossip.find({}, (err,foundGossip)=>{
+// app.get('/',(req,res)=>{
+//     Gossip.find({}, (err,foundGossip)=>{
 
-        if(err){
-            res.status(400).send(err)
-        }else{
-            res.render('./Index',{
-                gossip:foundGossip
-            })
-        }
-    })
-})
+//         if(err){
+//             res.status(400).send(err)
+//         }else{
+//             res.render('./Index',{
+//                 gossip:foundGossip
+//             })
+//         }
+//     })
+// })
 
 
 
@@ -88,61 +91,61 @@ app.get('/',(req,res)=>{
 ////////
 //NEW
 ///////
-app.get('/new',(req,res)=>{
-    res.render('./New')
-})
+// app.get('/new',(req,res)=>{
+//     res.render('./New')
+// })
 
 ////////
 //DELETE
 ///////
-app.delete('/:id',(req,res)=>{
-    Gossip.findByIdAndDelete(req.params.id,(err,deletedGossip)=>{
-        if(err){
-            res.status(400).send(err)
-        }else{res.redirect('/')}
-    })
-})
+// app.delete('/:id',(req,res)=>{
+//     Gossip.findByIdAndDelete(req.params.id,(err,deletedGossip)=>{
+//         if(err){
+//             res.status(400).send(err)
+//         }else{res.redirect('/')}
+//     })
+// })
 
 
 ///////
 //UPDATE
-///////
-app.put('/:id',(req,res)=>{
-    Gossip.findByIdAndUpdate(req.params.id,req.body,{new:true},(err,updatedGossip)=>{
-        if(err){
-            res.status(400).send(err)
-        }else{res.redirect(`/${req.params.id}`)}
-    })
-})
+// ///////
+// app.put('/:id',(req,res)=>{
+//     Gossip.findByIdAndUpdate(req.params.id,req.body,{new:true},(err,updatedGossip)=>{
+//         if(err){
+//             res.status(400).send(err)
+//         }else{res.redirect(`/${req.params.id}`)}
+//     })
+// })
 
 
 ///////
 ///CREATE
 //////
 
-app.post('/',(req,res)=>{
-    Gossip.create(req.body,(err,createdGossip)=>{
-        if(err){
-            res.status(400).send(err)
-        }else{
-            console.log(createdGossip)
-            res.redirect('/')}
-    })
-})
+// app.post('/',(req,res)=>{
+//     Gossip.create(req.body,(err,createdGossip)=>{
+//         if(err){
+//             res.status(400).send(err)
+//         }else{
+//             console.log(createdGossip)
+//             res.redirect('/')}
+//     })
+// })
 
 ///////
 //EDIT
 ///////
-app.get('/:id/edit',(req,res)=>{
-    const {id}=req.params;
-    Gossip.findById(req.params.id,(err, foundGossip)=>{
-        if(err){
-            res.status(400).send(err)
-        }else{res.render('./Edit',{
-            gossip:foundGossip
-        })}
-    })
-})
+// app.get('/:id/edit',(req,res)=>{
+//     const {id}=req.params;
+//     Gossip.findById(req.params.id,(err, foundGossip)=>{
+//         if(err){
+//             res.status(400).send(err)
+//         }else{res.render('./Edit',{
+//             gossip:foundGossip
+//         })}
+//     })
+// })
 
 
 // app.put('/logs/:id',(req,res)=>{
@@ -156,24 +159,26 @@ app.get('/:id/edit',(req,res)=>{
 //////
 //SHOW
 //////
-app.get('/:id',(req,res)=>{
-    Gossip.findById(req.params.id,(err,foundGossip)=>{
-        if(err){
-            res.status(400).send(err)
-        }else{
-            res.render('./Show',{
-                gossip:foundGossip
-            })
-        }
-    })
-})
+// app.get('/:id',(req,res)=>{
+//     Gossip.findById(req.params.id,(err,foundGossip)=>{
+//         if(err){
+//             res.status(400).send(err)
+//         }else{
+//             res.render('./Show',{
+//                 gossip:foundGossip
+//             })
+//         }
+//     })
+// })
 
 
 
 
 //CONTACT INFORMATION
 
-
+// app.get('/',(req,res)=>{
+//     res.render('/Contact')
+// })
 const PORT = process.env.PORT || 8000
 
 
