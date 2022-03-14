@@ -53,7 +53,7 @@ npm install
 .git ignore
 imgur.com
 morgan
-
+ npm install bcryptjs express-session connect-mongo
 
 I want to add the following( Add geo location API so it can only show posts in your area and i want to make Multer work or something related to it, so i can upload images from your device. I want to get my like button to work and make it so the "Top"Liked posts will show as a corousel. i had the corousel working but i had to deleted since i coulnt get my like button to work.
 https://getbootstrap.com/docs/5.0/components/carousel/ )

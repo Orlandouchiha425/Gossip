@@ -1,6 +1,6 @@
 ///Import Dependencies
 
-const mongoose=require('./connection')
+const mongoose=require('./server.js')
 
 
 ///DEFINE Model
