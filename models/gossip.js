@@ -1,5 +1,8 @@
-const mongoose=require('mongoose')
-const gossipsSchema=new mongoose.Schema({
+const mongoose=require('./connection');
+
+
+const {Schema,model}=mongoose;
+const gossipsSchema= new Schema({
     title:String,
     image:String,
     post:String,
@@ -8,5 +11,5 @@ const gossipsSchema=new mongoose.Schema({
 
 })
 
- const Gossip=mongoose.model('Gossip', gossipsSchema);
+ const Gossip=model('Gossip', gossipsSchema);
  module.exports=Gossip;

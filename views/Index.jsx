@@ -1,6 +1,6 @@
 const res = require('express/lib/response');
 const React =require('react')
-const express=require('express')
+// const express=require('express')
 
 
 const Default=require('./Default')
@@ -12,10 +12,14 @@ class Index extends React.Component{
                 
 
                 <nav className='nav p-3 mb-2 bg-secondary '>
-                    <a className="nav-link text-white new-color" href='/'>Home</a>
+                    <a className="nav-link text-white new-color" href='/gossip'>Home</a>
                     <a className='nav-link text-white new-color' href='/new'>New Post</a>
                     <a className='nav-link text-white new-color' href='#'>Neigborhood Watch</a>
                     <a className='nav-link text-white new-color' href='/contact'>Contact Us</a>
+                    <div>
+  
+
+</div>
                     </nav>
            
 
@@ -29,7 +33,9 @@ class Index extends React.Component{
 
                 <div>
                 <h1>Welcome Home </h1>
-                
+                <a href="/user/signup"><button>Signup</button></a>
+  <a href="/user/login"><button>Login</button></a>
+  <a href="/user/logout"><button>Logout</button></a>
                 </div>
 
                 <div className='container-sm' >
@@ -46,7 +52,7 @@ class Index extends React.Component{
                                 <span id='icon'><i className="fa-solid fa-thumbs-up">
                                     </i></span>
                         <span id='count' >0</span>likes</button>}
-                        <a href={`/${gossips._id}` }><h4 >{gossips.title}</h4>  </a>
+                        <a href={`/gossip/${gossips._id}` }><h4 >{gossips.title}</h4></a>
                         <div className='short'>
                         <p >{gossips.post}</p>
                         </div>

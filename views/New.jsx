@@ -10,7 +10,7 @@ class New extends React.Component{
             <Default title="Create a new Post">
                 
                 <nav className='nav p-3 mb-2 bg-secondary '>
-                    <a className="nav-link text-white new-color" href='/'>Home</a>
+                    <a className="nav-link text-white new-color" href='/gossip'>Home</a>
                     <a className='nav-link text-white new-color' href='/new'>New Post</a>
                     <a className='nav-link text-white new-color' href='#'>Neigborhood Watch</a>
                     <a className='nav-link text-white new-color' href='/contact'>Contact Us</a>

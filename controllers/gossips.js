@@ -1,7 +1,8 @@
 // ///Import Dependencies
 
-const express= require("express");
-const Gossip= require('../models/gossip')
+const express=require('express')
+const Gossip=require('../models/gossip')
+
 
 
 
@@ -11,6 +12,17 @@ const Gossip= require('../models/gossip')
 
 const router=express.Router()
 
+////////////////////////////////////////
+// Router Middleware
+////////////////////////////////////////
+// Authorization Middleware
+router.use((req, res, next) => {
+    if (req.session.loggedIn) {
+      next();
+    } else {
+      res.redirect("/user/login");
+    }
+  });
 
 
 //Contact
@@ -19,41 +31,22 @@ router.get('/contact',(req,res)=>{
 })
 
 
-router.get('/seed',(req,res)=>{
-        const startPost=[
-            {title:"Orlando is so short",post:"Orlando is so short and chubby that he is 1 pizza away from getting rolled by willy wonka and  squeeze the grape out of him"},
-            {title:"noisy neighbor" ,post:"Is 3 am and the neighbor in the apartment 209 is very noisey, i cant sleep. someone call the policy and report noise complaint",image:"https://i.imgur.com/AYxFxuO.png" },
-            {title:"General Assembly", post: "has anyone else heard that even if general assembly is very expensive you can learn alot more than you can yourself? highly recommended", image:"https://i.imgur.com/GdayqQt.png"},
-            {title:"Cat stuck",post:"i found a cat stuck in a tree, i climbed the tree and now im stuck too, send help NOW! oh and food",image:"https://i.imgur.com/GSbPcGY.jpg"},
-            {title:"still stuck",post:" so you all gonna act like you havent seen my post? its been 3 days, the cat is trying to chew my leg"},
-            {title:"4 days now",post:'Wait, I wasnt wearing my glasses, is not a cat. i been stuck with a racoon, i tried to rescue a racoon. i had to jump down.'},
-            {title:"test", post:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui dicta minus Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui dicta minus Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui dicta minus Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui dicta minus Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui dicta minus Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui dicta minus Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui dicta minus"}
-        ]
-        ///DELETE ALL POSTS
-        Gossip.deleteMany({}).then((data)=>{
-            Gossip.create(startPost).then((data)=>{
-                res.json(data);
-            })
-        }).catch((err)=>{
-            res.status(400).send(err)
-        })
-    })
-////
+
 //////INDEX
 ////
-
-
 router.get('/',(req,res)=>{
-    Gossip.find({}, (err,foundGossip)=>{
-
-        if(err){
-            res.status(400).send(err)
-        }else{
-            res.render('./Index',{
-                gossip:foundGossip
-            })
-        }
-    })
+    //find all the gossip
+        Gossip.find({ username: req.session.username})
+        //render a template after they are found
+        .then((gossip)=>{
+            console.log(gossip);
+            res.render("./Index",{ gossip})
+        })
+        // send error as json if they aren't
+        .catch((gossip)=>{
+            console.log(error);
+            res.json({ error})
+        })
 })
 
 
@@ -69,54 +62,119 @@ router.get('/new',(req,res)=>{
 //////
 ///DELETE
 /////
+
+
 router.delete('/:id',(req,res)=>{
-    Gossip.findByIdAndDelete(req.params.id,(err,deletedGossip)=>{
-        if(err){
-            res.status(400).send(err)
-        }else{res.redirect('/')}
+    //get the id from params
+    const id=req.params.id;
+    //Delete Gossip
+    Gossip.findByIdAndRemove(id)
+    .then((gossip)=>{
+        //redirect to main page after deleting
+        res.redirect('/gossip')
+    })
+    // send error as json
+    .catch((error)=>{
+        console.log(error);
+        res.json({ error })
     })
 })
+// router.delete('/:id',(req,res)=>{
+//     Gossip.findByIdAndDelete(req.params.id,(err,deletedGossip)=>{
+//         if(err){
+//             res.status(400).send(err)
+//         }else{res.redirect('/gossip')}
+//     })
+// })
 
 
 /////
 ////UPDATE
 ///////
-router.put('/:id',(req,res)=>{
-    Gossip.findByIdAndUpdate(req.params.id,req.body,{new:true},(err,updatedGossip)=>{
-        if(err){
-            res.status(400).send(err)
-        }else{res.redirect(`/${req.params.id}`)}
+
+router.put('/:id', (req,res)=>{
+    // get the id from params
+    const id=req.params.id;
+    Gossip.findByIdAndUpdate(id, req.body,{new: true})
+    .then((gossip)=>{
+        // redirect to the main page after updating
+        res.redirect('/gossip')
+    })
+    // send error as json
+    .catch((error)=>{
+        console.log(error);
+        res.json({ error });
     })
 })
+// router.put('/:id',(req,res)=>{
+//     Gossip.findByIdAndUpdate(req.params.id,req.body,{new:true},(err,updatedGossip)=>{
+//         if(err){
+//             res.status(400).send(err)
+//         }else{res.redirect(`/${req.params.id}`)}
+//     })
+// })
 
 
 /////
 ///CREATE
 ////
 
-router.post('/',(req,res)=>{
-    Gossip.create(req.body,(err,createdGossip)=>{
-        if(err){
-            res.status(400).send(err)
-        }else{
-            console.log(createdGossip)
-            res.redirect('/')}
+router.post('/', (req,res)=>{
+     // add username to req.body to track related user
+  req.body.username = req.session.username;    
+// Creat new Fruit
+Gossip.create(req.body)
+    .then((gossip)=>{
+        // redirect user to Index page if succesfully created item
+        res.redirect("/gossip")
+    })
+    // send error as json
+    .catch((error)=>{
+        console.log(error);
+        res.json({ error })
     })
 })
+
+// router.post('/gossip',(req,res)=>{
+//     req.body.username=req.session.username;
+//     Gossip.create(req.body,(err,createdGossip)=>{
+//         if(err){
+//             res.status(400).send(err)
+//         }else{
+//             console.log(createdGossip)
+//             res.redirect('/gossip')}
+//     })
+// })
 
 /////
 /////EDIT
 /////
-router.get('/:id/edit',(req,res)=>{
-    const {id}=req.params;
-    Gossip.findById(req.params.id,(err, foundGossip)=>{
-        if(err){
-            res.status(400).send(err)
-        }else{res.render('./Edit',{
-            gossip:foundGossip
-        })}
+
+router.get('/:id/edit', (req,res)=>{
+    // get the id from params
+    const id=req.params.id
+    // geth the gossip from database
+    Gossip.findById(id)
+    .then((gossip)=>{
+        //render edit page and send gossip data
+        res.render('./Edit',{ gossip})
+    })
+    //send error as json
+    .catch((error)=>{
+        console.log(error)
+        res.json({ error })
     })
 })
+// router.get('/:id/edit',(req,res)=>{
+//     const {id}=req.params;
+//     Gossip.findById(req.params.id,(err, foundGossip)=>{
+//         if(err){
+//             res.status(400).send(err)
+//         }else{res.render('./Edit',{
+//             gossip:foundGossip
+//         })}
+//     })
+// })
 
 
 // router.put('/logs/:id',(req,res)=>{
@@ -130,17 +188,35 @@ router.get('/:id/edit',(req,res)=>{
 ////
 //////SHOW
 ////
-router.get('/:id',(req,res)=>{
-    Gossip.findById(req.params.id,(err,foundGossip)=>{
-        if(err){
-            res.status(400).send(err)
-        }else{
-            res.render('./Show',{
-                gossip:foundGossip
-            })
-        }
+router.get("/:id",(req,res)=>{
+    // get the id from params
+    const id=req.params.id;
+    // find particural gossip from the database
+
+    Gossip.findById(id)
+    .then((gossip)=>{
+        console.log(gossip)
+        // render template with with data from database
+        res.render("./Show",{gossip})
+    })
+    .catch((error)=>{
+        console.log(error)
+        res.json({ error })
     })
 })
+
+
+// router.get('/:id',(req,res)=>{
+//     Gossip.findById(req.params.id,(err,foundGossip)=>{
+//         if(err){
+//             res.status(400).send(err)
+//         }else{
+//             res.render('./Show',{
+//                 gossip:foundGossip
+//             })
+//         }
+//     })
+// })
 
 
 
