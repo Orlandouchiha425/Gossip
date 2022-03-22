@@ -27,8 +27,10 @@ router.use((req, res, next) => {
 
 //Contact
 router.get('/contact',(req,res)=>{
-    res.render('./Contact')
+    res.render('Contact')
 })
+
+
 
 
 
@@ -40,7 +42,7 @@ router.get('/',(req,res)=>{
         //render a template after they are found
         .then((gossip)=>{
             console.log(gossip);
-            res.render("./Index",{ gossip})
+            res.render("Index",{ gossip})
         })
         // send error as json if they aren't
         .catch((gossip)=>{
@@ -56,7 +58,7 @@ router.get('/',(req,res)=>{
 //////NEW
 /////
 router.get('/new',(req,res)=>{
-    res.render('./New')
+    res.render('New')
 })
 
 //////
@@ -157,7 +159,7 @@ router.get('/:id/edit', (req,res)=>{
     Gossip.findById(id)
     .then((gossip)=>{
         //render edit page and send gossip data
-        res.render('./Edit',{ gossip})
+        res.render('Edit',{ gossip})
     })
     //send error as json
     .catch((error)=>{
@@ -197,7 +199,7 @@ router.get("/:id",(req,res)=>{
     .then((gossip)=>{
         console.log(gossip)
         // render template with with data from database
-        res.render("./Show",{gossip})
+        res.render("Show",{gossip})
     })
     .catch((error)=>{
         console.log(error)

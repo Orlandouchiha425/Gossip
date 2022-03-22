@@ -7,10 +7,10 @@ class Login extends React.Component{
         <fieldset>
           <legend>User Login</legend>
           <label
-            >USERNAME: <input type="text" name="username" required />
+            >USERNAME: <input type="text" name="username" required  defaultValue="test"/>
           </label>
           <label
-            >PASSWORD: <input type="password" name="password" required />
+            >PASSWORD: <input type="password" name="password" required defaultValue="test"/>
           </label>
           <input type="submit" value="Login" />
         </fieldset>

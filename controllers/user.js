@@ -15,9 +15,7 @@
      res.render('user/Signup.jsx');
  })
 
- router.post('/signup',(req,res)=>{
-     res.send("signup");
- })
+
 
 
  ///the login routes (Get=>form, post => submit form)
@@ -26,9 +24,6 @@
      res.render('user/Login.jsx')
  });
 
- router.post('/login',(req,res)=>{
-     res.send('login');
- })
 
 ///////////////created controllers/user.js above ^^^^^^^^^^
 

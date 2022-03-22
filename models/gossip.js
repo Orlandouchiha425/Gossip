@@ -7,7 +7,7 @@ const gossipsSchema= new Schema({
     image:String,
     post:String,
     username:String,
-    
+    email:String,
 
 })
 

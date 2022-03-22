@@ -8,10 +8,11 @@ class Show extends React.Component{
             <Default>
            
            <nav className='nav p-3 mb-2 bg-secondary '>
-                    <a className="nav-link text-white new-color" href='/'>Home</a>
-                    <a className='nav-link text-white new-color' href='/new'>New Post</a>
+                    <a className="nav-link text-white new-color" href='/gossip'>Home</a>
+                    <a className='nav-link text-white new-color' href='/gossip/new'>New Post</a>
                     <a className='nav-link text-white new-color' href='#'>Neigborhood Watch</a>
-                    <a className='nav-link text-white new-color' href='/contact'>Contact Us</a>
+                    <a className='nav-link text-white new-color' href='/gossip/contact'>Contact Us</a>
+                   
                     </nav>
 
 
@@ -22,7 +23,7 @@ class Show extends React.Component{
                 <div >
                 <p>{gossip.post}</p>
                 
-                <a href={`/${ gossip._id}/edit`}>
+                <a href={`/gossip/${ gossip._id}/edit`}>
                     <button>Edit</button></a>
                 <form action={`/${gossip._id}?_method=Delete`} method='POST'>
                     <input type="submit" value='Delete'/>

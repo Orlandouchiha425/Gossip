@@ -33,14 +33,16 @@ const express=require('express')
 
 class Contact extends React.Component{
     render(){
-        return(
+      const gossip=this.props.gossip;
+      return(
           <Default>
         <div id='formatted-address'></div>
         <nav className='nav p-3 mb-2 bg-secondary '>
                     <a className="nav-link text-white new-color" href='/gossip'>Home</a>
-                    <a className='nav-link text-white new-color' href='/new'>New Post</a>
+                    <a className='nav-link text-white new-color' href='/gossip/new'>New Post</a>
                     <a className='nav-link text-white new-color' href='#'>Neigborhood Watch</a>
-                    <a className='nav-link text-white new-color' href='/contact'>Contact Us</a>
+                    <a className='nav-link text-white new-color' href='/gossip/contact'>Contact Us</a>
+                   
                     </nav>
               <a className="footer" href= "mailto:valadez425@gmail.com?" target="_top">valadez425@gmail.com</a>
                 <footer>
@@ -48,6 +50,8 @@ class Contact extends React.Component{
                   <p>Orlando Valadez</p>
                  <p>P Sherman 42 Wallaby Way Sydney</p> 
                  <p>281-330-8004</p>
+                 
+                 
                
                   </footer>
           </Default>  
