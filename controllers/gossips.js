@@ -90,7 +90,7 @@ router.delete('/:id',(req,res)=>{
     Gossip.findByIdAndRemove(id)
     .then((gossip)=>{
         //redirect to main page after deleting
-        res.redirect('/gossip')
+        res.redirect('/')
     })
     // send error as json
     .catch((error)=>{
@@ -117,7 +117,7 @@ router.put('/:id', (req,res)=>{
     Gossip.findByIdAndUpdate(id, req.body,{new: true})
     .then((gossip)=>{
         // redirect to the main page after updating
-        res.redirect('/gossip')
+        res.redirect('/')
     })
     // send error as json
     .catch((error)=>{

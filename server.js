@@ -78,12 +78,12 @@ app.use((req,res,next)=>{
 ////////////////
 //ROUTES
 //////////////////
-app.use('/gossip',gossipRouter)// send all "/fruits" routes to fruit router  //// send all "/gossip" routes to gossip router
+app.use('/',gossipRouter)// send all "/fruits" routes to fruit router  //// send all "/gossip" routes to gossip router
 app.use("/user", UserRouter); // send all "/user" routes to user router
 // app.get('/seed',async(req,res)=>{})///CHECKKKKKKKK
 
 
-app.get("/", (req, res) => {
+app.get("/gossip", (req, res) => {
     res.render("Index");
   });///////CHECKKKKKKKKKKKK
 

@@ -6,7 +6,7 @@ class Edit extends React.Component{
         return(
             <Default>
                
-            <form action={`/gossip/${this.props.gossip._id}?_method=PUT`} method="POST">
+            <form action={`/${this.props.gossip._id}?_method=PUT`} method="POST">
                 Title: <input type="text" name="title" defaultValue={this.props.gossip.name}/><br/>
                 Post: <textarea type='text' name="post" defaultValue={this.props.gossip.post}/><br/>
                 Url Image:<input type="text" name="image" defaultValue={this.props.gossip.image}/><br/>

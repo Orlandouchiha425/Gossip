@@ -41,7 +41,7 @@ class Index extends React.Component{
                                 <span id='icon'><i className="fa-solid fa-thumbs-up">
                                     </i></span>
                         <span id='count' >0</span>likes</button>}
-                        <a href={`/gossip/${gossips._id}` }><h4 >{gossips.title}</h4></a>
+                        <a href={`/${gossips._id}` }><h4 >{gossips.title}</h4></a>
                         <div className='short'>
                         <p >{gossips.post}</p>
                         </div>
