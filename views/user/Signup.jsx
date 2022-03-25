@@ -1,7 +1,10 @@
 const React=require('react')
+const Default=require('../Default')
 class Signup extends React.Component{
   render(){
-    return(<div>
+    return(
+    <Default>
+    <div>
       <form action="/user/signup" method="post">
         <fieldset>
           <legend>New User</legend>
@@ -18,7 +21,9 @@ class Signup extends React.Component{
           <input type="submit" value="Create Account" />
         </fieldset>
       </form>
-    </div>)
+    </div>
+    </Default>
+    )
   }
 }
 

@@ -1,7 +1,10 @@
 const React =require('react')
+const Default=require('../Default')
 class Login extends React.Component{
   render(){
     return(
+      <Default>
+      
       <div>
       <form action="/user/login" method="post">
         <fieldset>
@@ -16,6 +19,7 @@ class Login extends React.Component{
         </fieldset>
       </form>
       </div>
+      </Default>
     )
   }}
 

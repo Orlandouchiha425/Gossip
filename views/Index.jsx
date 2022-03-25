@@ -11,16 +11,6 @@ class Index extends React.Component{
             <Default>
                 
 
-                <nav className='nav p-3 mb-2 bg-secondary '>
-                    <a className="nav-link text-white new-color" href='/gossip'>Home</a>
-                    <a className='nav-link text-white new-color' href='/gossip/new'>New Post</a>
-                    <a className='nav-link text-white new-color' href='#'>Neigborhood Watch</a>
-                    <a className='nav-link text-white new-color' href='/gossip/contact'>Contact Us</a>
-                    <div>
-  
-
-</div>
-                    </nav>
            
 
             
@@ -33,9 +23,8 @@ class Index extends React.Component{
 
                 <div>
                 <h1>Welcome Home </h1>
-                <a href="/user/signup"><button>Signup</button></a>
-  <a href="/user/login"><button>Login</button></a>
-  <a href="/user/logout"><button>Logout</button></a>
+                
+  
                 </div>
 
                 <div className='container-sm' >
@@ -88,3 +77,50 @@ class Index extends React.Component{
 
 module.exports=Index;
 
+
+
+//get my like button to work see below!!! 
+// function MyButton() {
+//     const [count, setCount] = useState(0);
+  
+//     function handleClick() {
+//       setCount(count + 1);
+//     }
+  
+//     return (
+//       <button onClick={handleClick}>
+//         Clicked {count} times
+//       </button>
+//     );
+//   }
+
+
+
+
+
+//   ////////import 
+//   import { useState } from 'react';
+
+// function MyButton() {
+//   const [count, setCount] = useState(0);
+
+//   function handleClick() {
+//     setCount(count + 1);
+//   }
+
+//   return (
+//     <button onClick={handleClick}>
+//       Clicked {count} times
+//     </button>
+//   );
+// }
+
+// export default function MyApp() {
+//   return (
+//     <div>
+//       <h1>Counters that update separately</h1>
+//       <MyButton />
+//       <MyButton />
+//     </div>
+//   );
+// }

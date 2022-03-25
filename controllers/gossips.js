@@ -16,13 +16,14 @@ const router=express.Router()
 // Router Middleware
 ////////////////////////////////////////
 // Authorization Middleware
-router.use((req, res, next) => {
+const middleWare=(req, res, next) => {
     if (req.session.loggedIn) {
       next();
     } else {
       res.redirect("/user/login");
     }
-  });
+  };
+
 
 
 //Contact
@@ -38,6 +39,9 @@ router.get('/contact',(req,res)=>{
 ////
 router.get('/',(req,res)=>{
     //find all the gossip
+    if(req.session.loggedIn){
+
+    
         Gossip.find({ username: req.session.username})
         //render a template after they are found
         .then((gossip)=>{
@@ -48,7 +52,20 @@ router.get('/',(req,res)=>{
         .catch((gossip)=>{
             console.log(error);
             res.json({ error})
+                })
+            } else{
+                Gossip.find({})
+        //render a template after they are found
+        .then((gossip)=>{
+            console.log(gossip);
+            res.render("Index",{ gossip})
         })
+        // send error as json if they aren't
+        .catch((gossip)=>{
+            console.log(error);
+            res.json({ error})
+                })
+            }
 })
 
 
@@ -57,7 +74,7 @@ router.get('/',(req,res)=>{
 //////
 //////NEW
 /////
-router.get('/new',(req,res)=>{
+router.get('/new',middleWare,(req,res)=>{
     res.render('New')
 })
 
